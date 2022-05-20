@@ -1,0 +1,6 @@
+train:
+  hoge: 0
+valid:
+  hoge: 1
+test:
+  hoge: 2
