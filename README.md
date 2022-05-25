@@ -8,6 +8,25 @@
 pip install -r requirements.txt
 ```
 
+## Hydra の設定
+
+設定ファイルの置き場所
+
+```python
+HYDRA_CONFIG_PATH = os.path.join(os.curdir, 'conf')
+HYDRA_CONFIG_NAME = 'config.yaml'
+```
+
+各ディレクトリ内でのデフォルトの設定ファイルを指定することができる。
+`config.yaml` の設定例は下記の通り。
+
+```yaml
+defaults:
+  - settings: default
+  - data: default
+  - model: default
+```
+
 ## 実行
 
 ### 複数の設定で実行
