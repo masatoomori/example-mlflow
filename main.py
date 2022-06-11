@@ -11,7 +11,7 @@ HYDRA_CONFIG_PATH = os.path.join(os.curdir, 'conf')
 HYDRA_CONFIG_NAME = 'config.yaml'
 
 
-@hydra.main(config_path=HYDRA_CONFIG_PATH, config_name=HYDRA_CONFIG_NAME)
+@hydra.main(version_base='1.1', config_path=HYDRA_CONFIG_PATH, config_name=HYDRA_CONFIG_NAME)
 def main(cfg: DictConfig) -> None:
 	mlflow.set_tracking_uri('file://' + hydra.utils.get_original_cwd() + '/mlruns')
 	experiment_name = cfg.settings.experiment_name
@@ -20,6 +20,7 @@ def main(cfg: DictConfig) -> None:
 	run_name = cfg.settings.run_name
 
 	print(cfg)
+	print(hydra.utils.get_original_cwd())
 
 	with mlflow.start_run(run_name=run_name):
 		mlflow.log_param('experiment_name', experiment_name)
