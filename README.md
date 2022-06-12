@@ -29,6 +29,21 @@ defaults:
 
 ## 実行
 
+`version: 1.2` から、デフォルトでは working directory の位置が `outputs` 以下に変更しなくなった。
+下記を正しく記録するためには、`outputs` 以下に移動する必要がある。
+
+```python
+mlflow.log_artifact('.hydra/config.yaml')			# まとめられた設定内容
+mlflow.log_artifact('.hydra/hydra.yaml')			# Hydraの構成
+mlflow.log_artifact('.hydra/overrides.yaml')		# コマンドラインから上書きした内容
+```
+
+実行時に下記引数を加える。
+
+```bash
+python main.py hydra.job.chdir=True
+```
+
 ### 複数の設定で実行
 
 設定項目をカンマで区切ると複数の設定を実行できる。
