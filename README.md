@@ -38,7 +38,8 @@ mlflow.log_artifact('.hydra/hydra.yaml')			# Hydraの構成
 mlflow.log_artifact('.hydra/overrides.yaml')		# コマンドラインから上書きした内容
 ```
 
-実行時に下記引数を加える。
+そのためには、実行時に引数 `hydra.job.chdir=True` を加える必要がある。
+実行例は下記の通り。
 
 ```bash
 python main.py hydra.job.chdir=True

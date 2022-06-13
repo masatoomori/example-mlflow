@@ -11,7 +11,10 @@ HYDRA_CONFIG_NAME = 'config.yaml'
 
 @hydra.main(version_base=None, config_path=HYDRA_CONFIG_PATH, config_name=HYDRA_CONFIG_NAME)
 def main(cfg: DictConfig) -> None:
-	original_cwd = hydra.utils.get_original_cwd()
+	original_cwd = hydra.utils.get_original_cwd()		# スクリプト実行場所
+
+	assert original_cwd != os.getcwd(), 'run this script with `hydra.job.chdir=True`'
+
 	mlflow.set_tracking_uri('file://' + original_cwd + '/mlruns')
 	experiment_name = cfg.settings.experiment_name
 	mlflow.set_experiment(experiment_name)
