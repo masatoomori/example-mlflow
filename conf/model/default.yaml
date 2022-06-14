@@ -1,2 +1,4 @@
-hyperparam:
-  hoge: 1
+test_size: 0.2
+alpha: 0.5
+l1_ratio: 0.2
+random_state: 22

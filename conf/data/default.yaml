@@ -1,6 +1,3 @@
-train:
-  hoge: 0
-valid:
-  hoge: 1
-test:
-  hoge: 2
+name: 'wine-quality'
+path: 'raw'
+file: 'wine-quality.csv'
