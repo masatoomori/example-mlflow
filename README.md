@@ -12,9 +12,19 @@ pip install -r requirements.txt
 
 設定ファイルの置き場所
 
-```python
-HYDRA_CONFIG_PATH = os.path.join(os.curdir, 'conf')
-HYDRA_CONFIG_NAME = 'config.yaml'
+```bash
+├── README.md
+├── conf                  # 設定ファイルの置き場所
+│   ├── config.yaml
+│   ├── data/
+│   ├── model/
+│   └── settings/
+├── data
+│   └── raw
+├── requirements.txt
+├── src
+│   └── models
+└── venv
 ```
 
 各ディレクトリ内でのデフォルトの設定ファイルを指定することができる。
