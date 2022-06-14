@@ -44,7 +44,7 @@ def main(cfg: DictConfig) -> None:
 	assert original_cwd != os.getcwd(), 'run this script with `hydra.job.chdir=True`'
 
 	mlflow.set_tracking_uri('file://' + original_cwd + '/mlruns')
-	experiment_name = 'test'
+	experiment_name = cfg.settings.experiment_name
 	mlflow.set_experiment(experiment_name)
 
 	print(original_cwd)

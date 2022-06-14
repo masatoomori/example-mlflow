@@ -132,7 +132,9 @@ dmypy.json
 .DS_Store
 
 # MLFlow
-mlruns/
+src/models/mlruns
+src/models/multirun
+src/outputs
 
 # Hydra
 outputs/

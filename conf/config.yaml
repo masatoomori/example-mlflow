@@ -1,3 +1,4 @@
 defaults:
+  - settings: default
   - data: default
   - model: default
