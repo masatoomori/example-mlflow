@@ -1,4 +1,3 @@
-experiment_name: test
 defaults:
   - data: default
   - model: default

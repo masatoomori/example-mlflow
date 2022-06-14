@@ -44,7 +44,7 @@ def main(cfg: DictConfig) -> None:
 	assert original_cwd != os.getcwd(), 'run this script with `hydra.job.chdir=True`'
 
 	mlflow.set_tracking_uri('file://' + original_cwd + '/mlruns')
-	experiment_name = cfg.experiment_name
+	experiment_name = 'test'
 	mlflow.set_experiment(experiment_name)
 
 	print(original_cwd)
@@ -69,9 +69,8 @@ def main(cfg: DictConfig) -> None:
 		df_test['pred'] = model.predict(X_test)
 
 		# Log model
-		mlflow.log_metric("rmse", rmse)
-		mlflow.log_metric("r2", r2)
-		mlflow.log_metric("mae", mae)
+		mlflow.log_metric("rmse", rmse, step=0)					# 指標は1つずつ書き込めるし
+		mlflow.log_metrics({"r2": r2, "mae": mae}, step=0)		# 複数書き込むこともできる
 		mlflow.sklearn.log_model(model, "model")
 		log_hydra_config()
 		log_file(df_train, cfg.data.name + '_train.pkl', 'result')
