@@ -58,8 +58,6 @@ def main(cfg: DictConfig) -> None:
 	y_test = df_test['quality']
 
 	with mlflow.start_run():
-		mlflow.log_param('experiment_name', experiment_name)
-
 		model = ElasticNet(alpha=cfg.model.alpha, l1_ratio=cfg.model.l1_ratio, random_state=cfg.model.random_state)
 		model.fit(X_train, y_train)
 		y_pred = model.predict(X_test)
