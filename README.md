@@ -37,6 +37,46 @@ defaults:
   - model: default
 ```
 
+### .py での利用例
+
+```python
+import os
+
+import hydra
+from omegaconf import DictConfig
+import mlflow
+
+HYDRA_CONFIG_PATH = path/to/conf
+HYDRA_CONFIG_NAME = 'config.yaml'
+
+
+@hydra.main(version_base=None, config_path=HYDRA_CONFIG_PATH, config_name=HYDRA_CONFIG_NAME)
+def main(cfg: DictConfig) -> None:
+    original_cwd = hydra.utils.get_original_cwd()
+
+    assert original_cwd != os.getcwd(), 'run this script with `hydra.job.chdir=True`'
+
+    mlflow.set_tracking_uri('file://' + original_cwd + '/mlruns')
+    print(cfg)
+```
+
+### Jupyter Notebook での利用例
+
+```python
+import os
+
+from hydra import initialize, compose
+from omegaconf import DictConfig
+
+HYDRA_CONFIG_PATH = path/to/conf
+HYDRA_CONFIG_NAME = 'config.yaml'
+
+with initialize(version_base=None, config_path=HYDRA_CONFIG_PATH):
+    cfg = compose(config_name=HYDRA_CONFIG_NAME)
+    print(cfg)
+```
+
+
 ## 実行
 
 `version: 1.2` から、デフォルトでは working directory の位置が `outputs` 以下に変更しなくなった。
