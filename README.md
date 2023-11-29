@@ -1,4 +1,4 @@
-# test-mlfow
+# example mlflow
 
 入力を [Hydra][linkhydra] で管理し、出力を [MLFlow][linkmlflow] で管理するサンプルスクリプト。
 
